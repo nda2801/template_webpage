@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Development Template</title>
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Piazzolla:opsz,wght@8..30,700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f8fafc;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 40px;
+            background: #111827;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .background {
+            background-color: #111827;
+            color: #ffffff;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 140px;
+            height: 42px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: #f3f4f6;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-list li a:hover {
+            color: #38bdf8;
+        }
+
+        .rightNav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #search {
+            padding: 8px 14px;
+            font-size: 14px;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            outline: none;
+            background-color: #1f2937;
+            color: #ffffff;
+            transition: border-color 0.2s;
+        }
+
+        #search:focus {
+            border-color: #38bdf8;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: 1.5px solid #38bdf8;
+            border-radius: 8px;
+            background: #38bdf8;
+            color: #0f172a;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #38bdf8;
+        }
+
+        .btn-sm {
+            padding: 7px 16px;
+        }
+
+        /* Typography */
+        .text-big {
+            font-family: 'Piazzolla', serif;
+            font-weight: 700;
+            font-size: 38px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .text-small {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .box-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: auto;
+            height: 100%;
+            padding: 20px;
+        }
+
+        /* First Section (Web Technology) */
+        .firstsection {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .firstHalf {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Second Section (C Programming) */
+        .secondsection {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .secondHalf {
+            width: 100%;
+        }
+
+        /* Third Section (Java Programming with Image) */
+        .section {
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        .section-Left {
+            flex-direction: row-reverse;
+        }
+
+        .paras {
+            flex: 1;
+        }
+
+        .paras .sectionTag {
+            color: #0f172a;
+        }
+
+        .paras .sectionSubTag {
+            color: #475569;
+        }
+
+        .thumbnail {
+            flex-shrink: 0;
+        }
+
+        .thumbnail img {
+            width: 320px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            border: 2px solid #e2e8f0;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 28px 0;
+            background-color: #0f172a;
+            border-top: 1px solid #1e293b;
+        }
+
+        .text-footer {
+            text-align: center;
+            font-family: 'Ubuntu', sans-serif;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 820px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .section {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .thumbnail img {
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <div class="logo">
+                <img src="https://placehold.co/180x50/38bdf8/0f172a?text=DevAcademy" alt="Logo" onerror="this.src='https://placehold.co/180x50/1e293b/ffffff?text=Logo'">
+            </div>
+            <li><a href="#web">Web Technology</a></li>
+            <li><a href="#program">C Programming</a></li>
+            <li><a href="#course">Java Course</a></li>
+        </ul>
+
+        <div class="rightNav">
+            <input type="text" name="search" id="search" placeholder="Search topics...">
+            <button class="btn btn-sm">Search</button>
+        </div>
+    </nav>
+
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web">Web Technology</h1>
+                <p class="text-small">
+                    HTML stands for HyperText Markup Language. It is used to design
+                    web pages using a markup language. HTML is the combination of Hypertext
+                    and Markup language. Hypertext defines the link between the web
+                    pages. A markup language is used to define the text document within
+                    tag which defines the structure of web pages. HTML is a markup language
+                    that is used by the browser to manipulate text, images, and other
+                    content to display it in the required format.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="secondsection">
+        <div class="box-main">
+            <div class="secondHalf">
+                <h1 class="text-big" id="program">C Programming</h1>
+                <p class="text-small">
+                    C is a procedural programming language. It was initially developed by Dennis
+                    Ritchie as a system programming language to write operating systems.
+                    The main features of C language include low-level access to memory, simple set
+                    of keywords, and clean style, these features make C language suitable for
+                    system programming like operating system or compiler development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="course">
+        <div class="paras">
+            <h1 class="sectionTag text-big">Java</h1>
+            <p class="sectionSubTag text-small">
+                Java has been one of the most popular programming languages
+                for many years. Java is Object Oriented. However it is not
+                considered as pure object oriented as it provides support for primitive
+                data types (like int, char, etc). The Java codes are first compiled into byte
+                code (machine independent code). Then the byte code is run on Java Virtual
+                Machine (JVM) regardless of the underlying architecture.
+            </p>
+        </div>
+
+        <div class="thumbnail">
+            <img src="https://placehold.co/400x260/0f172a/38bdf8?text=Java+Ecosystem" alt="Laptop showing code" onerror="this.src='https://placehold.co/300x200?text=No+Image'">
+        </div>
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright © - All rights are reserved
+        </p>
+    </footer>
+
+</body>
+</html>
